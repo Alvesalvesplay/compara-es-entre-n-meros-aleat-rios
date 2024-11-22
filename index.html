@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Tarefa 010</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 400px;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #0056b3;
+        }
+
+        button {
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #003d80;
+        }
+
+        input[type="number"] {
+            width: 60px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        th {
+            background-color: #0056b3;
+            color: white;
+        }
+
+        td {
+            background-color: #f9f9f9;
+        }
+
+        #comparação {
+            margin-top: 20px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Gerador de Números Aleatórios</h1>
+
+        <p id="comparação"></p>
+
+        <script type="text/javascript">
+            function os_3_nº_aleatorios() {
+                var nº1, nº2, nº3, comp;
+
+                nº1 = Math.floor(Math.random() * 3) + 1;
+                nº2 = Math.floor(Math.random() * 3) + 1;
+                nº3 = Math.floor(Math.random() * 3) + 1;
+
+                document.getElementById("nº1").value = nº1;
+                document.getElementById("nº2").value = nº2;
+                document.getElementById("nº3").value = nº3;
+
+                if (nº1 === nº2 && nº2 === nº3) {
+                    comp = "Todos os números (" + nº1 + ") são iguais.";
+                } else if (nº1 === nº2 && nº1 > nº3) {
+                    comp = "O 1º e o 2º números (" + nº1 + ") são iguais e maiores que o 3º número (" + nº3 + ").";
+                } else if (nº1 === nº2 && nº1 < nº3) {
+                    comp = "O 1º e o 2º números (" + nº1 + ") são iguais e menores que o 3º número (" + nº3 + ").";
+                } else if (nº1 === nº3 && nº1 > nº2) {
+                    comp = "O 1º e o 3º números (" + nº1 + ") são iguais e maiores que o 2º número (" + nº2 + ").";
+                } else if (nº1 === nº3 && nº1 < nº2) {
+                    comp = "O 1º e o 3º números (" + nº1 + ") são iguais e menores que o 2º número (" + nº2 + ").";
+                } else if (nº2 === nº3 && nº2 > nº1) {
+                    comp = "O 2º e o 3º números (" + nº2 + ") são iguais e maiores que o 1º número (" + nº1 + ").";
+                } else if (nº2 === nº3 && nº2 < nº1) {
+                    comp = "O 2º e o 3º números (" + nº2 + ") são iguais e menores que o 1º número (" + nº1 + ").";
+                } else {
+                    var maior = Math.max(nº1, nº2, nº3);
+                    var menor = Math.min(nº1, nº2, nº3);
+                    comp = "O maior número é " + maior + " e o menor número é " + menor + ". Todos os números são diferentes.";
+                }
+
+                alert(comp);
+                document.getElementById("comparação").innerHTML = comp;
+            }
+        </script>
+
+        <button onclick="os_3_nº_aleatorios()">Gerar Números</button>
+
+        <table>
+            <tr>
+                <th>Posição</th>
+                <th>Número Gerado</th>
+            </tr>
+            <tr>
+                <td>1º Número</td>
+                <td><input type="number" id="nº1" readonly></td>
+            </tr>
+            <tr>
+                <td>2º Número</td>
+                <td><input type="number" id="nº2" readonly></td>
+            </tr>
+            <tr>
+                <td>3º Número</td>
+                <td><input type="number" id="nº3" readonly></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
